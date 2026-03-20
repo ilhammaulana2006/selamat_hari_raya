@@ -4,24 +4,624 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>🌙 Selamat Hari Idul Fitri 1447 H & Nyepi 1948 Saka 🌙</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D4AF37;
+            --primary-gold-dark: #B8962E;
+            --secondary-gold: #F7E8A4;
+            --deep-purple: #1a0033;
+            --purple-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gold-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 50%, #D4AF37 100%);
+            --night-gradient: linear-gradient(135deg, #0c0c1d 0%, #1a0033 50%, #2d1b69 100%);
+            --white-glow: rgba(255, 255, 255, 0.1);
+            --shadow-lg: 0 25px 50px rgba(0,0,0,0.3);
+            --shadow-glow: 0 0 30px rgba(212, 175, 55, 0.4);
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--night-gradient);
+            color: #fff;
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle 3s infinite ease-in-out;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .particle {
+            position: absolute;
+            background: linear-gradient(45deg, var(--primary-gold), var(--secondary-gold));
+            border-radius: 50%;
+            pointer-events: none;
+            animation: float 6s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .title-wrapper {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .title {
+            font-family: 'Dancing+Script', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+            letter-spacing: 2px;
+            margin: 0;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px var(--primary-gold)); }
+            to { filter: drop-shadow(0 0 40px var(--primary-gold)); }
+        }
+
+        .subtitle {
+            font-size: clamp(1.1rem, 3vw, 1.5rem);
+            font-weight: 500;
+            color: var(--secondary-gold);
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .date {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 400;
+        }
+
+        /* Main Greeting Card */
+        .greeting-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            padding: 3rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: var(--shadow-lg), inset 0 1px 0 rgba(255,255,255,0.2);
+            animation: fadeInUp 1.5s ease-out 0.3s both;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .greeting-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212,175,55,0.1), transparent);
+            animation: shimmer 3s infinite;
+            transform: rotate(45deg);
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .main-greeting {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .greeting-line {
+            font-size: clamp(1.3rem, 4vw, 2rem);
+            font-weight: 600;
+            color: var(--secondary-gold);
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .main-greeting strong {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 700;
+            color: #fff;
+            display: block;
+            margin: 0.5rem 0;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.5);
+        }
+
+        .main-greeting small {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* Holiday Cards */
+        .holiday-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .holiday-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: 1px solid rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .holiday-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: inherit;
+            border-radius: 25px;
+            padding: 2px;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .holiday-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4), var(--shadow-glow);
+            border-color: var(--primary-gold);
+        }
+
+        .holiday-card:hover::before {
+            opacity: 1;
+        }
+
+        .holiday-card.special {
+            background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(247,232,164,0.1));
+            border-color: var(--primary-gold);
+        }
+
+        .holiday-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            background: var(--purple-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            filter: drop-shadow(0 0 20px rgba(102,126,234,0.5));
+        }
+
+        .holiday-card.special .holiday-icon {
+            background: var(--gold-gradient);
+            filter: drop-shadow(0 0 25px var(--primary-gold));
+        }
+
+        .holiday-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        .holiday-desc {
+            color: rgba(255,255,255,0.85);
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .ribbon {
+            position: absolute;
+            top: -10px;
+            right: -40px;
+            background: var(--primary-gold);
+            color: #000;
+            padding: 0.5rem 3rem;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        /* CTA Buttons */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1.2rem 2.5rem;
+            background: var(--gold-gradient);
+            color: #1a0033;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212,175,55,0.4);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(212,175,55,0.5);
+        }
+
+        .cta-button.primary {
+            background: var(--purple-gradient);
+            color: #fff;
+            box-shadow: 0 15px 35px rgba(102,126,234,0.4);
+        }
+
+        .cta-button.primary:hover {
+            box-shadow: 0 20px 45px rgba(102,126,234,0.6);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: auto;
+            padding: 3rem 0 2rem;
+            opacity: 0.9;
+        }
+
+        .footer p {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .footer strong {
+            color: var(--secondary-gold);
+            font-weight: 600;
+        }
+
+        .footer small {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .modal-content {
+            background: rgba(20, 20, 40, 0.95);
+            backdrop-filter: blur(25px);
+            border-radius: 30px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: var(--shadow-lg), var(--shadow-glow);
+            animation: modalSlideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: scale(0.7) translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-gold);
+            color: #000;
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+        }
+
+        .modal-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-body {
+            padding: 0 2rem 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .greeting-card {
+                padding: 2rem 1.5rem;
+                margin: 1.5rem 0;
+            }
+            
+            .holiday-section {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .holiday-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Audio Controls */
+        .audio-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+
+        .audio-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .audio-btn:hover {
+            background: var(--primary-gold);
+            color: #000;
+            transform: scale(1.1);
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--night-gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+               }
+
+        .loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255,255,255,0.1);
+            border-top: 4px solid var(--primary-gold);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader::after {
+            content: '🌙';
+            position: absolute;
+            font-size: 2rem;
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.7; }
+            50% { transform: scale(1.3); opacity: 1; }
+        }
+    </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="loader"></div>
+    </div>
+
     <!-- Audio Elements -->
     <audio id="idulFitriAudio" preload="auto" loop>
-        <source src="idulfitri.mp3" type="audio/wav">
-        <!-- Fallback audio URL - ganti dengan audio takbir Idul Fitri Anda -->
-    </audio>
-    <audio id="nyepiAudio" preload="auto">
+        <source src="idulfitri.mp3" type="audio/mpeg">
         <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
-        <!-- Fallback gamelan sound -->
+    </audio>
+    <audio id="nyepiAudio" preload="auto" loop>
+        <source src="nyepi-gamelan.mp3" type="audio/mpeg">
+        <source src="https://www.soundjay.com/misc/sounds/bell-ringing-05.wav" type="audio/wav">
     </audio>
 
-    <!-- Floating Particles -->
-    <div class="particles" id="particles"></div>
+    <!-- Background Effects -->
     <div class="stars" id="stars"></div>
+    <div class="particles" id="particles"></div>
+
+    <!-- Audio Controls -->
+    <div class="audio-controls">
+        <div class="audio-btn" id="nyepiToggle" title="Nyepi Audio">
+            <i class="fas fa-music"></i>
+        </div>
+        <div class="audio-btn" id="idulFitriToggle" title="Takbir Idul Fitri">
+            <i class="fas fa-mosque"></i>
+        </div>
+    </div>
 
     <!-- Modal -->
     <div class="modal" id="holidayModal">
@@ -35,9 +635,12 @@
             </div>
             <div class="modal-body" id="modalBody"></div>
             <div class="modal-footer">
-                <a href="#" class="cta-button" onclick="shareHoliday()">
-                    <i class="fas fa-share-alt"></i> Bagikan Ucapan Ini
+                <a href="#" class="cta-button" onclick="shareHoliday(event)">
+                    <i class="fas fa-share-alt"></i> Bagikan Ucapan
                 </a>
+                <button class="cta-button primary" onclick="playHolidayAudio()">
+                    <i class="fas fa-play"></i> Putar Audio
+                </button>
             </div>
         </div>
     </div>
@@ -59,9 +662,9 @@
         <section class="greeting-card">
             <div class="main-greeting">
                 <div class="greeting-line">✨ Taqabbalallahu minna wa minkum ✨</div>
-                <strong>Selamat Hari Idul Fitri</strong><br>
-                Mohon Maaf Lahir & Batin 🙏<br>
-                <small>Semoga berkah selalu menyertai kita</small>
+                <strong>Selamat Hari Idul Fitri 1447 H</strong><br>
+                <em>Mohon Maaf Lahir & Batin 🙏</em><br>
+                <small>Semoga berkah selalu menyertai kita semua</small>
             </div>
             
             <div class="holiday-section">
@@ -70,8 +673,8 @@
                     <div class="holiday-icon">
                         <i class="fas fa-moon"></i>
                     </div>
-                    <h3 class="holiday-title">Hari Raya Nyepi</h3>
-                    <p class="holiday-desc">Hari suci umat Hindu Bali dengan penuh kesunyian dan refleksi spiritual</p>
+                    <h3 class="holiday-title">🕉️ Hari Raya Nyepi 1948 Saka</h3>
+                    <p class="holiday-desc">Hari suci umat Hindu Bali dengan penuh kesunyian, refleksi spiritual, dan meditasi dalam damai</p>
                     <div class="card-overlay"></div>
                 </div>
 
@@ -80,27 +683,264 @@
                     <div class="holiday-icon">
                         <i class="fas fa-mosque"></i>
                     </div>
-                    <h3 class="holiday-title">Idul Fitri 1447 H</h3>
-                    <p class="holiday-desc">Hari kemenangan umat Islam setelah sebulan penuh ibadah Ramadhan</p>
+                    <h3 class="holiday-title">🕌 Idul Fitri 1447 H</h3>
+                    <p class="holiday-desc">Hari kemenangan umat Islam setelah sebulan penuh ibadah Ramadhan yang penuh berkah</p>
                     <div class="card-overlay"></div>
                     <div class="ribbon">🎉 SPECIAL 🎉</div>
                 </div>
             </div>
 
             <!-- Main CTA -->
-            <a href="#" class="cta-button primary" onclick="shareMainMessage()">
-                <i class="fas fa-share-alt"></i> Bagikan Ucapan Selamat Hari Raya
-            </a>
+            <div style="text-align: center; margin: 3rem 0;">
+                <a href="#" class="cta-button primary" onclick="shareMainMessage(event)" style="font-size: 1.2rem; padding: 1.4rem 3rem;">
+                    <i class="fas fa-share-alt"></i> Bagikan Ucapan Selamat Hari Raya
+                </a>
+            </div>
         </section>
 
         <!-- Footer -->
         <footer class="footer">
             <p>🌟 <strong>Semoga kebahagiaan, kedamaian, dan berkah selalu menyertai kita semua</strong> 🌟</p>
-            <p>🕌 Mohon maaf lahir dan batin 🕉️</p>
-            <p><small>Dibuat dengan ❤️ untuk Hari Raya | Powered by Ilham Maulana</small></p>
+            <p>🕌 <strong>Mohon maaf lahir dan batin</strong> 🕉️</p>
+            <p><small>Dibuat dengan ❤️ untuk Hari Raya | Powered by Ilham Maulana | 2026</small></p>
         </footer>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loading').classList.add('hidden');
+            }, 1500);
+        });
+
+        // Background Effects
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.width = star.style.height = (Math.random() * 3 + 1) + 'px';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            setInterval(() => {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = particle.style.height = (Math.random() * 6 + 2) + 'px';
+                particle.style.animationDuration = (Math.random() * 3 + 4) + 's';
+                particle.style.animationDelay = Math.random() * 2 + 's';
+                particlesContainer.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 7000);
+            }, 300);
+        }
+
+        // Audio Controls
+        const nyepiAudio = document.getElementById('nyepiAudio');
+        const idulFitriAudio = document.getElementById('idulFitriAudio');
+        let nyepiPlaying = false;
+        let idulFitriPlaying = false;
+
+        document.getElementById('nyepiToggle').addEventListener('click', () => {
+            nyepiPlaying = !nyepiPlaying;
+            nyepiAudio.loop = true;
+            if (nyepiPlaying) {
+                nyepiAudio.play().catch(e => console.log('Audio play failed:', e));
+                document.getElementById('nyepiToggle').innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                nyepiAudio.pause();
+                document.getElementById('nyepiToggle').innerHTML = '<i class="fas fa-music"></i>';
+            }
+        });
+
+        document.getElementById('idulFitriToggle').addEventListener('click', () => {
+            idulFitriPlaying = !idulFitriPlaying;
+            idulFitriAudio.loop = true;
+            if (idulFitriPlaying) {
+                idulFitriAudio.play().catch(e => console.log('Audio play failed:', e));
+                document.getElementById('idulFitriToggle').innerHTML = '<i class="fas fa-pause"></i>';
+            } else {
+                idulFitriAudio.pause();
+                document.getElementById('idulFitriToggle').innerHTML = '<i class="fas fa-mosque"></i>';
+            }
+        });
+
+        // Modal Functions
+        const holidayData = {
+            nyepi: {
+                icon: '<i class="fas fa-moon"></i>',
+                title: '🕉️ Hari Raya Nyepi 1948 Saka',
+                body: `
+                    <p><strong>Hari Raya Nyepi</strong> adalah hari suci terpenting dalam kalender umat Hindu Bali.</p>
+                    <ul style="margin-top: 1rem; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto;">
+                        <li>🌙 <strong>Catu Kala Paring</strong> - Hari sebelum Nyepi</li>
+                        <li>🔕 <strong>Nyepi</strong> - Hari sunyi total 24 jam</li>
+                        <li>💧 <strong>Melasti</strong> - Pembersihan spiritual</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; font-style: italic;">Semoga Nyepi membawa kedamaian jiwa dan raga.</p>
+                `,
+                audio: 'nyepiAudio'
+            },
+            idulfitri: {
+                icon: '<i class="fas fa-mosque"></i>',
+                title: '🕌 Idul Fitri 1447 H',
+                body: `
+                    <p><strong>Idul Fitri</strong> atau Hari Raya Fitri adalah momen kemenangan umat Islam setelah sebulan penuh berpuasa Ramadhan.</p>
+                    <ul style="margin-top: 1rem; text-align: left; max-width: 400px; margin-left: auto; margin-right: auto;">
+                        <li>🌅 <strong>Takbir, Tahmid, Tahmid</strong> - Pengagungan Allah</li>
+                        <li>👨‍👩‍👧‍👦 <strong>Silaturahmi</strong> - Bertemu keluarga & sahabat</li>
+                        <li>🤲 <strong>Mohon Maaf</strong> - Lahir dan batin</li>
+                    </ul>
+                    <p style="margin-top: 1.5rem; font-style: italic;">Taqabbalallahu minna wa minkum. Mohon maaf lahir dan batin.</p>
+                `,
+                audio: 'idulFitriAudio'
+            }
+        };
+
+        function openModal(holiday) {
+            const data = holidayData[holiday];
+            document.getElementById('modalIcon').innerHTML = data.icon;
+            document.getElementById('modalTitle').textContent = data.title;
+            document.getElementById('modalBody').innerHTML = data.body;
+            document.getElementById('holidayModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Auto play audio
+            setTimeout(() => playHolidayAudio(holiday), 500);
+        }
+
+        function closeModal() {
+            document.getElementById('holidayModal').classList.remove('active');
+            document.body.style.overflow = '';
+            nyepiAudio.pause();
+            idulFitriAudio.pause();
+        }
+
+        function playHolidayAudio(holiday = null) {
+            if (holiday === 'nyepi' || !holiday) nyepiAudio.play().catch(e => {});
+            if (holiday === 'idulfitri' || !holiday) idulFitriAudio.play().catch(e => {});
+        }
+
+        // Share Functions
+        function shareMainMessage(event) {
+            event.preventDefault();
+            const message = `🌙 Selamat Hari Raya Idul Fitri 1447 H & Nyepi 1948 Saka 🌙
+
+✨ Taqabbalallahu minna wa minkum ✨
+Mohon maaf lahir dan batin 🙏
+
+Semoga berkah selalu menyertai kita semua!
+🕌🕉️ 18-24 Maret 2026`;
+            
+            shareText(message);
+        }
+
+        function shareHoliday(event) {
+            event.preventDefault();
+            const modalTitle = document.getElementById('modalTitle').textContent;
+            const message = `🌟 ${modalTitle} 🌟
+
+${document.getElementById('modalBody').textContent.substring(0, 150)}...
+
+Mohon maaf lahir dan batin 🙏
+#HariRaya #IdulFitri1447H #Nyepi1948Saka`;
+            
+            shareText(message);
+        }
+
+        function shareText(text) {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Selamat Hari Raya!',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                // Fallback copy to clipboard
+                navigator.clipboard.writeText(text).then(() => {
+                    // Show toast
+                    showToast('Teks disalin! Paste di aplikasi chat favoritmu 😊');
+                });
+            }
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: var(--primary-gold);
+                color: #000;
+                padding: 1rem 1.5rem;
+                border-radius: 25px;
+                font-weight: 600;
+                z-index: 10000;
+                transform: translateX(400px);
+                transition: transform 0.3s ease;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateX(0)';
+            }, 100);
+            
+            setTimeout(() => {
+                toast.style.transform = 'translateX(400px)';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Close modal on outside click
+        document.getElementById('holidayModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('holidayModal')) {
+                closeModal();
+            }
+        });
+
+        // Keyboard support
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createStars();
+            createParticles();
+            
+            // Intersection Observer for animations
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                    }
+                });
+            });
+            
+            document.querySelectorAll('.holiday-card, .greeting-card').forEach(el => {
+                observer.observe(el);
+            });
+        });
+
+        // PWA Support
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js');
+            });
+        }
+    </script>
 </body>
 </html>
